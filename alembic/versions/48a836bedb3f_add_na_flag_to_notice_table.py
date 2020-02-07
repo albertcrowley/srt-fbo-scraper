@@ -42,11 +42,13 @@ depends_on = None
 
 
 def upgrade():
-    if alembic_helpers.table_has_column('notice', 'na_flag'):
-        op.drop_column('notice', 'na_flag')
-    op.add_column('notice', sa.Column('na_flag', 
-                                      sa.Boolean, 
-                                      default = False))
+    if table_has_column('notice', 'na_flag'):
+        # op.drop_column('notice', 'na_flag')
+        pass
+    else:
+        op.add_column('notice', sa.Column('na_flag',
+                                          sa.Boolean,
+                                          default = False))
 
 
 def downgrade():

@@ -44,10 +44,10 @@ depends_on = None
 
 
 def upgrade():
-    if not alembic_helpers.table_has_column('attachment', 'filename'):
+    if not table_has_column('attachment', 'filename'):
         op.add_column('attachment', sa.Column('filename', sa.Text, nullable = True))
 
 
 def downgrade():
-    if alembic_helpers.table_has_column('attachment', 'filename'):
+    if table_has_column('attachment', 'filename'):
         op.drop_column('attachment', 'filename')

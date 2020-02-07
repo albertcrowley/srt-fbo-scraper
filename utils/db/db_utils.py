@@ -205,6 +205,7 @@ def insert_data(session, data):
         agency = opp.pop('agency')
         compliant = opp.pop('compliant')
         solicitation_number = opp.pop('solnbr')
+        publish_date = opp.get('publish_date', None)
         
         matching_notices = fetch_notices_by_solnbr(solicitation_number, session)
         is_solnbr_in_db = True if matching_notices else False
@@ -222,13 +223,15 @@ def insert_data(session, data):
                                agency = agency,
                                notice_data = opp,
                                compliant = compliant,
-                               history = history)
+                               history = history,
+                               publish_date = publish_date)
         else:
             notice = db.Notice(notice_type_id = notice_type_id,
                                solicitation_number = solicitation_number,
                                agency = agency,
                                notice_data = opp,
-                               compliant = compliant)
+                               compliant = compliant,
+                               publish_date = publish_date)
         for doc in attachments:
             attachment =  db.Attachment(notice_type_id = notice_type_id,
                                         filename = doc['filename'],

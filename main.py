@@ -38,4 +38,4 @@ def main(limit = None):
     
 
 if __name__ == '__main__':
-    main()
+    main(150)

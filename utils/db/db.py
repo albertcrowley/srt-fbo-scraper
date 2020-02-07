@@ -43,6 +43,7 @@ class Notice(Base):
     updatedAt = Column(DateTime, nullable = True)
     na_flag = Column(Boolean, default = False)
     attachments = relationship("Attachment", back_populates = "notice", cascade = "all, delete-orphan")
+    publish_date = Column(DateTime, nullable=True)
 
 class NoticeType(Base):
     __tablename__ = 'notice_type'

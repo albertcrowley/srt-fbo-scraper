@@ -151,7 +151,8 @@ def schematize_opp(opp):
                      'agency': agency,
                      'compliant': 0,
                      'office': office,
-                     'attachments': []}
+                     'attachments': [],
+                     'publish_date': opp.get('publishDate', None)}
     
     notice_data = get_notice_data(opp_data, opp_id)
 
